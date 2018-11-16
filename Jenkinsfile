@@ -7,22 +7,22 @@ pipeline {
                 sh 'go version'
             }
         }
-	stage(‘test’) {
-	   steps {
-	      timeout(time: 5, unit: ‘MINUTES’) {
-                 retry(5) {
-                   sh ‘echo “deneme deneme”’
-                 }
-              }
-           }		
+	    stage('test') {
+	        steps {
+	            timeout(time: 5, unit: 'MINUTES') {
+                    retry(5) {
+                        sh 'echo "deneme deneme"'
+                    }
+                }
+            }		
         }
     }
     post {
-	always {
-	  echo ‘always’
-	}
+	    always {
+	        echo 'always'
+	    }
         success {
-	  echo ‘dimi’
-	}
+	        echo 'dimi'
+	    }
     }
 }
