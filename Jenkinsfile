@@ -1,10 +1,17 @@
 pipeline {
     agent { docker { image 'golang' } }
+
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
+    }
+
     stages {
         stage('build') {
             steps {
                 sh 'echo "Hello World"'
                 sh 'go version'
+                sh 'printenv'
             }
         }
 	    stage('test') {
